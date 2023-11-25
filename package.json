@@ -1,0 +1,65 @@
+{
+  "name": "react-hook-form-cloudscape",
+  "version": "0.0.1",
+  "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
+  "license": "MIT",
+  "main": "react-hook-form-cloudscape.umd.js",
+  "module": "react-hook-form-cloudscape.es.js",
+  "types": "index.d.ts",
+  "files": [
+    "components",
+    "react-hook-form-cloudscape.es.js",
+    "react-hook-form-cloudscape.es.js.map",
+    "react-hook-form-cloudscape.umd.js",
+    "react-hook-form-cloudscape.umd.js.map",
+    "index.js",
+    "index.js.map",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write '**/*.{ts,tsx,json,cjs,js}'",
+    "build": "npm run lint:fix && npm run format && tsc && vite build",
+    "semantic-release": "semantic-release"
+  },
+  "keywords": [
+    "react",
+    "react-hook-form",
+    "cloudscape",
+    "form",
+    "components",
+    "typescript"
+  ],
+  "peerDependencies": {
+    "@cloudscape-design/components": ">=3.0.0",
+    "react": "^16.8 || ^17 || ^18",
+    "react-dom": "^16.8 || ^17 || ^18",
+    "react-hook-form": ">=7.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.1.2",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jsdom": "^23.0.1",
+    "prettier": "^3.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.2",
+    "semantic-release": "^24.2.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vite-plugin-dts": "^4.4.0",
+    "vitest": "^1.1.0"
+  }
+}

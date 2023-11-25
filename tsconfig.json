@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2020", "DOM"],
+    "target": "ES2015",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "strict": true,
+    "declaration": true,
+    "jsx": "react",
+    "rootDir": "src",
+    "outDir": "./",
+    "declarationDir": "./components",
+    "baseUrl": "./",
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "exclude": ["src/setupTests.ts", "node_modules", "src/**/*.test.tsx", "src/**/*.spec.tsx"]
+}

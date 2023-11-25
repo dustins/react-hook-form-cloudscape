@@ -1,0 +1,12 @@
+# Dependency directories
+node_modules/
+
+# Build output
+dist
+
+.DS_Store
+/components
+index.d.ts
+index.js
+index.js.map
+react-hook-form-cloudscape*
