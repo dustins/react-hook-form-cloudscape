@@ -19,16 +19,6 @@
         [
             "@semantic-release/git",
             {
-                "assets": [
-                    "components",
-                    "react-hook-form-cloudscape.es.js",
-                    "react-hook-form-cloudscape.es.js.map",
-                    "react-hook-form-cloudscape.umd.js",
-                    "react-hook-form-cloudscape.umd.js.map",
-                    "index.js",
-                    "index.js.map",
-                    "index.d.ts"
-                ],
                 "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ],
