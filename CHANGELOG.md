@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.1.2...v1.2.0) (2024-12-26)
+
+
+### Features
+
+* **new:** file upload component ([bb20316](https://github.com/abudayah/react-hook-form-cloudscape/commit/bb20316f7e73bfd93f8f59c18cf3d9982aaf11d1))
+
 ## [1.1.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.1.1...v1.1.2) (2024-12-26)
 
 
