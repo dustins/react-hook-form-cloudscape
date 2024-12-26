@@ -43,7 +43,7 @@ function App {
 
 ## Demo
 
-<video src='demo.mp4'/></video>
+![](demo.gif)
 
 ## Getting help
 
