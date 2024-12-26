@@ -23,7 +23,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write '**/*.{ts,tsx,json,cjs,js}'",
     "build": "npm run lint:fix && npm run format && tsc && vite build",
-    "semantic-release": "semantic-release"
+    "dry-run": "npx semantic-release --dry-run > dry-run-output.txt"
   },
   "keywords": [
     "react",

@@ -17,3 +17,6 @@ react-hook-form-cloudscape.umd.js.map
 
 # System files
 .DS_Store
+
+#Others
+dry-run-output.txt
