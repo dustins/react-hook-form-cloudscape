@@ -38,25 +38,4 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: false,
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
-    css: true,
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html', 'lcov'],
-      reportsDirectory: './coverage',
-      include: ['src/**/*.{ts,tsx}'],
-      exclude: [
-        'src/**/*.d.ts',
-        'src/**/*.stories.tsx',
-        'src/**/index.ts',
-        'src/components/**/types.ts',
-        'src/types.ts',
-        'src/main.tsx',
-        'src/setupTests.ts',
-      ],
-    },
-  },
 });
