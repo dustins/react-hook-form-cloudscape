@@ -1,6 +1,7 @@
 export * from './attribute-editor';
 export * from './autosuggest';
 export * from './checkbox';
+export * from './cards';
 export * from './code-editor';
 export * from './date-picker';
 export * from './date-range-picker';
