@@ -8,6 +8,9 @@ A React library that simplifies the integration of [`react-hook-form`](https://g
   </a>&nbsp;
   <a href="https://securityscorecards.dev/viewer/?uri=github.com/abudayah/react-hook-form-cloudscape" target="_blank">
     <img alt="OpenSSF Scorecard" src="https://api.securityscorecards.dev/projects/github.com/abudayah/react-hook-form-cloudscape/badge">
+  </a>&nbsp;
+  <a href="https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates" target="_blank">
+    <img alt="OpenSSF Scorecard" src="https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates/badge.svg">
   </a>
 </p>
 
