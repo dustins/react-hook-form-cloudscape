@@ -34,8 +34,8 @@
     "react",
     "react-hook-form",
     "cloudscape",
-    "form",
-    "components",
+    "form-validation",
+    "react-component",
     "typescript"
   ],
   "peerDependencies": {
