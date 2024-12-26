@@ -1,8 +1,25 @@
+# Dependency directories
 node_modules/
-dist
+
+# coverage
+coverage/
+
+# Build output
+/dist/
+/index.d.ts
+/index.js
+/index.js.map
+/components/
+react-hook-form-cloudscape.es.js
+react-hook-form-cloudscape.es.js.map
+react-hook-form-cloudscape.umd.js
+react-hook-form-cloudscape.umd.js.map
+
+# Environment variables
+.env
+
+# System files
 .DS_Store
-/components
-index.d.ts
-index.js
-index.js.map
-react-hook-form-cloudscape*
+
+# Others
+dry-run-output.txt
