@@ -22,7 +22,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'ReactHookFormCloudscape',
       formats: ['es', 'umd'],
-      fileName: (format: string) => `react-hook-form-cloudscape.${format}.js`,
+      fileName: (format) => `react-hook-form-cloudscape.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react-hook-form', /^@cloudscape-design\/.*$/],
@@ -31,11 +31,9 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM',
           'react-hook-form': 'ReactHookForm',
-          '@cloudscape-design/components': 'CloudscapeComponents',
         },
       },
     },
     sourcemap: true,
-    emptyOutDir: false,
   },
 });
