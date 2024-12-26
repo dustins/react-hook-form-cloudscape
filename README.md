@@ -41,6 +41,10 @@ function App {
 
 ```
 
+## Demo
+
+<video src='demo.mp4'/></video>
+
 ## Getting help
 
 You can [create bug reports or feature requests](https://github.com/abudayah/react-hook-form-cloudscape/issues/new/choose), or [start a discussion](https://github.com/abudayah/react-hook-form-cloudscape/discussions) to ask a question. To minimize duplicates, we recommend that you search for existing bug reports, feature requests, or discussions before initiating a new thread.
