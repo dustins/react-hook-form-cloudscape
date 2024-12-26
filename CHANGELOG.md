@@ -5,6 +5,7 @@
 
 * **new:** cards component ([36f5fef](https://github.com/abudayah/react-hook-form-cloudscape/commit/36f5fef02ec18a2d34f0a10f4dbdabc0848454a5))
 
+
 ## [1.0.1-dev.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.0.0...v1.0.1-dev.1) (2024-12-26)
 
 
