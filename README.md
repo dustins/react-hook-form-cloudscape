@@ -43,7 +43,7 @@ function App {
 
 ## Demo
 
-![](demo.gif)
+![](https://raw.githubusercontent.com/abudayah/react-hook-form-cloudscape/refs/heads/dev/demo.gif)
 
 ## Getting help
 
