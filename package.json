@@ -69,5 +69,8 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
