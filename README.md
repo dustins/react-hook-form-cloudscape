@@ -2,6 +2,12 @@
 
 A React library that simplifies the integration of [`react-hook-form`](https://github.com/react-hook-form/react-hook-form) with [`Cloudscape Design System`](https://github.com/cloudscape-design/components).  It provides a set of pre-built, controlled input components that handle validation, allowing you to focus on building complex form logic with minimal effort.
 
+<p align="left">
+  <a href="https://securityscorecards.dev/viewer/?uri=github.com/abudayah/react-hook-form-cloudscape">
+    <img alt="OpenSSF Scorecard" src="https://api.securityscorecards.dev/projects/github.com/abudayah/react-hook-form-cloudscape/badge">
+  </a>
+</p>
+
 ### Installation
 
 ```
@@ -14,7 +20,7 @@ Required dependencies:
 
 - React >= 16.8 || >= 17 || >= 18
 - react-dom >= 16.8 || >= 17 || >= 18
-- react-hook-form >= 7.36
+- react-hook-form >= 7
 - @cloudscape-design/components
 
 ### How to use it
