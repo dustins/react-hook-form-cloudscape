@@ -36,13 +36,15 @@ function App {
   return (
       <Form>
         <FormField>
-          <CInput name="name" ... />
+          <CInput name="email" ... />
         </FormField>
       </Form>
   );
 };
 
 ```
+
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/bold-river-tjmd2l?workspaceId=ws_EKwBkPzNLsUrLTfF7Xr7MH)
 
 ## Demo
 
