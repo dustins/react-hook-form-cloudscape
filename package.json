@@ -2,6 +2,10 @@
   "name": "react-hook-form-cloudscape",
   "version": "1.1.1",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abudayah/react-hook-form-cloudscape.git"
+  },
   "license": "MIT",
   "main": "react-hook-form-cloudscape.umd.js",
   "module": "react-hook-form-cloudscape.es.js",
