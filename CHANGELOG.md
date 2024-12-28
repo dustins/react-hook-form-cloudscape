@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.2.0...v1.3.0) (2024-12-28)
+
+
+### Features
+
+* **new:** property filter component ([1abb76d](https://github.com/abudayah/react-hook-form-cloudscape/commit/1abb76df0b2d5cd8a7e15558880acdf4eb8bd7c9))
+* **new:** s3-resource-selector component ([d94b96e](https://github.com/abudayah/react-hook-form-cloudscape/commit/d94b96e0827c898bc4a333a01fd9eed7e959ca06))
+
 # [1.2.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.1.2...v1.2.0) (2024-12-26)
 
 
