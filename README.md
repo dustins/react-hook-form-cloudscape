@@ -2,20 +2,10 @@
 
 A React library that simplifies the integration of [`react-hook-form`](https://github.com/react-hook-form/react-hook-form) with [`Cloudscape Design System`](https://github.com/cloudscape-design/components).  It provides a set of pre-built, controlled input components that handle validation, allowing you to focus on building complex form logic with minimal effort.
 
-<p align="left">
-  <a href="https://www.npmjs.com/package/react-hook-form-cloudscape" target="_blank">
-    <img alt="npmjs" src="https://img.shields.io/npm/v/react-hook-form-cloudscape">
-  </a>
-  <a href="https://securityscorecards.dev/viewer/?uri=github.com/abudayah/react-hook-form-cloudscape" target="_blank">
-    <img alt="OpenSSF Scorecard" src="https://api.securityscorecards.dev/projects/github.com/abudayah/react-hook-form-cloudscape/badge">
-  </a>
-  <a href="https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates" target="_blank">
-    <img alt="OpenSSF Scorecard" src="https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates/badge.svg">
-  </a>
-  <a href="https://github.com/abudayah/react-hook-form-cloudscape" target="_blank">
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/abudayah/react-hook-form-cloudscape">
-  </a>
-</p>
+[![npmjs](https://img.shields.io/npm/v/react-hook-form-cloudscape)](https://www.npmjs.com/package/react-hook-form-cloudscape)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/abudayah/react-hook-form-cloudscape/badge)](https://securityscorecards.dev/viewer/?uri=github.com/abudayah/react-hook-form-cloudscape)
+[![OpenSSF Scorecard](https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates)
+[![GitHub Repo stars](https://img.shields.io/github/stars/abudayah/react-hook-form-cloudscape)](https://github.com/abudayah/react-hook-form-cloudscape)
 
 ### Installation
 
