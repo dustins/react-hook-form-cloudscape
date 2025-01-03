@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.3.0...v1.3.1) (2025-01-03)
+
+
+### Bug Fixes
+
+* **multiselect:** Selected options with options mapping ([62e1369](https://github.com/abudayah/react-hook-form-cloudscape/commit/62e1369260a6d6c1529623d2bbabef481a234ffc))
+
 # [1.3.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.2.0...v1.3.0) (2024-12-28)
 
 
