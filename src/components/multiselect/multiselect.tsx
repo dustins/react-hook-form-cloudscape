@@ -1,17 +1,15 @@
 import React, { useCallback } from 'react';
 import { Control, Controller, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
-import { Multiselect, MultiselectProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
-import MultiSelectUtils from './utils';
+import { MultiselectProps, NonCancelableCustomEvent, Multiselect } from '@cloudscape-design/components';
+import { transformMultiselectOptionsToArray, mapSelectedOptionsWithOptions } from './utils';
 
-export interface CMultiselectProps<T extends FieldValues> extends Omit<MultiselectProps, 'selectedOptions'> {
+export interface ControlledMultiselectProps<T extends FieldValues> extends Omit<MultiselectProps, 'selectedOptions'> {
   name: FieldPath<T>;
   control?: Control<T>;
-  options: MultiselectProps.Options; // Changed to required
+  options?: MultiselectProps.Options;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
   rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
   shouldUnregister?: boolean;
-  onBlur?: MultiselectProps['onBlur'];
-  onChange?: MultiselectProps['onChange'];
 }
 
 const CMultiselect = <TFieldValues extends FieldValues>({
@@ -24,17 +22,19 @@ const CMultiselect = <TFieldValues extends FieldValues>({
   onChange,
   shouldUnregister = false,
   ...props
-}: CMultiselectProps<TFieldValues>) => {
+}: ControlledMultiselectProps<TFieldValues>) => {
   const handleOnBlur = useCallback(
-    (event: NonCancelableCustomEvent<object>) => {
-      onBlur?.(event);
+    (formOnBlur: () => void, e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
+      formOnBlur();
+      onBlur?.(e);
     },
     [onBlur]
   );
 
   const handleOnChange = useCallback(
-    (event: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
-      onChange?.(event);
+    (formOnChange: (value: unknown) => void, e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
+      formOnChange(transformMultiselectOptionsToArray(e.detail.selectedOptions));
+      onChange?.(e);
     },
     [onChange]
   );
@@ -46,22 +46,18 @@ const CMultiselect = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { ref, onBlur: formOnBlur, onChange: formOnChange, value } }) => (
-        <Multiselect
-          ref={ref}
-          options={options}
-          onBlur={(e) => {
-            formOnBlur();
-            handleOnBlur(e);
-          }}
-          onChange={(e) => {
-            formOnChange(MultiSelectUtils.transformMultiselectOptionsToArray(e.detail.selectedOptions)); // Transform selectedOptions
-            handleOnChange(e);
-          }}
-          selectedOptions={value} // Directly use value
-          {...props}
-        />
-      )}
+      render={({ field: { ref, onChange, onBlur, value } }) => {
+        return (
+          <Multiselect
+            ref={ref}
+            options={options}
+            onBlur={() => handleOnBlur.bind(null, onBlur)}
+            onChange={handleOnChange.bind(null, onChange)}
+            selectedOptions={mapSelectedOptionsWithOptions(options, value)}
+            {...props}
+          />
+        );
+      }}
     />
   );
 };

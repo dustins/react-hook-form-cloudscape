@@ -1,6 +1,6 @@
-import { MultiselectProps } from '@cloudscape-design/components';
+import { MultiselectProps } from '@cloudscape-design/components/multiselect/interfaces';
 
-const transformMultiselectOptionsToArray = (selectedOptions: MultiselectProps.Options = []): string[] => {
+export const transformMultiselectOptionsToArray = (selectedOptions: MultiselectProps.Options = []): string[] => {
   if (selectedOptions?.length) {
     return selectedOptions
       .map((option: MultiselectProps.Option | MultiselectProps.OptionGroup) => {
@@ -16,7 +16,7 @@ const transformMultiselectOptionsToArray = (selectedOptions: MultiselectProps.Op
   return [];
 };
 
-const mapSelectedOptionsWithOptions = (
+export const mapSelectedOptionsWithOptions = (
   options: MultiselectProps.Options = [],
   selectedOptions: string[] = []
 ): Array<MultiselectProps.Option | MultiselectProps.OptionGroup> => {
@@ -47,9 +47,6 @@ const mapSelectedOptionsWithOptions = (
   return [];
 };
 
-const MultiSelectUtils = {
-  transformMultiselectOptionsToArray,
-  mapSelectedOptionsWithOptions,
-};
+const MultiSelectUtils = { transformMultiselectOptionsToArray, mapSelectedOptionsWithOptions };
 
 export default MultiSelectUtils;
