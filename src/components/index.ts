@@ -9,6 +9,7 @@ export * from './input';
 export * from './multiselect';
 export * from './radio-group';
 export * from './select';
+export * from './slider';
 export * from './tag-editor';
 export * from './text-filter';
 export * from './textarea';
