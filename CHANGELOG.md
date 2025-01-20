@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.3.2...v1.4.0) (2025-01-20)
+
+
+### Features
+
+* **new:** adding support to slider input ([6af4f22](https://github.com/abudayah/react-hook-form-cloudscape/commit/6af4f2243da8b8bdcc7ad232a3bc2853d34324a3))
+
 ## [1.3.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.3.1...v1.3.2) (2025-01-13)
 
 
