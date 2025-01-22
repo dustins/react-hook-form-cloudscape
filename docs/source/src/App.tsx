@@ -1,8 +1,15 @@
 import { useLayoutEffect, useState } from 'react';
-import './App.css'
-import { AppLayout, SideNavigation, HelpPanel, SplitPanel, TopNavigation, Flashbar } from '@cloudscape-design/components'
-import jsonHighlight from "@cloudscape-design/code-view/highlight/json";
-import { CodeView } from "@cloudscape-design/code-view";
+import './App.css';
+import {
+  AppLayout,
+  SideNavigation,
+  HelpPanel,
+  SplitPanel,
+  TopNavigation,
+  Flashbar,
+} from '@cloudscape-design/components';
+import jsonHighlight from '@cloudscape-design/code-view/highlight/json';
+import { CodeView } from '@cloudscape-design/code-view';
 
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import FormBasic from './forms/form-basic';
@@ -27,32 +34,32 @@ function App() {
     <HashRouter>
       <TopNavigation
         identity={{
-          href: "#",
-          title: "React-hook-form-cloudscape demos",
+          href: '#',
+          title: 'React-hook-form-cloudscape demos',
         }}
         utilities={[
           {
-            type: "button",
-            text: "GitHub",
-            href: "https://github.com/abudayah/react-hook-form-cloudscape",
+            type: 'button',
+            text: 'GitHub',
+            href: 'https://github.com/abudayah/react-hook-form-cloudscape',
             external: true,
-            externalIconAriaLabel: "GitHub (opens in a new tab)"
+            externalIconAriaLabel: 'GitHub (opens in a new tab)',
           },
           {
-            type: "menu-dropdown",
-            iconName: "settings",
-            ariaLabel: "Settings",
-            title: "Settings",
+            type: 'menu-dropdown',
+            iconName: 'settings',
+            ariaLabel: 'Settings',
+            title: 'Settings',
             items: [
               {
-                id: "settings-org",
-                text: "Organizational settings"
+                id: 'settings-org',
+                text: 'Organizational settings',
               },
               {
-                id: "settings-project",
-                text: "Project settings"
-              }
-            ]
+                id: 'settings-project',
+                text: 'Project settings',
+              },
+            ],
           },
         ]}
       />
@@ -65,7 +72,7 @@ function App() {
         navigation={
           <SideNavigation
             activeHref={activeHref}
-            onFollow={event => {
+            onFollow={(event) => {
               console.log(event.detail.href);
               if (!event.detail.external) {
                 // event.preventDefault();
@@ -74,13 +81,13 @@ function App() {
             }}
             items={[
               {
-                type: "section-group",
-                title: "Forms",
+                type: 'section-group',
+                title: 'Forms',
                 items: [
                   {
-                    type: "link",
-                    text: "📝 Basic",
-                    href: "#/form-basic",
+                    type: 'link',
+                    text: '📝 Basic',
+                    href: '#/form-basic',
                   },
                   // {
                   //   type: "link",
@@ -88,13 +95,13 @@ function App() {
                   //   href: "#/form-dynamic"
                   // },
                   {
-                    type: "link",
-                    text: "🪄 Wizard",
-                    href: "#/form-wizard"
-                  }
-                ]
+                    type: 'link',
+                    text: '🪄 Wizard',
+                    href: '#/form-wizard',
+                  },
+                ],
               },
-              { type: "divider" },
+              { type: 'divider' },
               // {
               //   type: "section-group",
               //   title: "Components",
@@ -115,7 +122,7 @@ function App() {
           />
         }
         notifications={
-          (flashMessageContent) && (
+          flashMessageContent && (
             <Flashbar
               items={[
                 {
@@ -124,15 +131,11 @@ function App() {
                   onDismiss: () => setFlashMessageContent(null),
                   header: 'The form submitted data was valid!',
                   content: (
-                    <div className='awsui-dark-mode'>
+                    <div className="awsui-dark-mode">
                       <p>Submitted date:</p>
-                      <CodeView
-                        content={flashMessageContent}
-                        highlight={jsonHighlight}
-                      />
+                      <CodeView content={flashMessageContent} highlight={jsonHighlight} />
                     </div>
-                  )
-                  ,
+                  ),
                 },
               ]}
             />
@@ -140,20 +143,20 @@ function App() {
         }
         tools={<HelpPanel header={<h2>Overview</h2>}>Help content</HelpPanel>}
         content={
-            <Routes>
-              <Route path="/form-basic" element={<FormBasic onSubmit={handleFormSubmit} />} />
-              <Route path="/form-wizard" element={<FormWizard onSubmit={handleFormSubmit} />} />
-              <Route path="/" element={<Navigate to="/form-basic" />} />
-            </Routes>
+          <Routes>
+            <Route path="/form-basic" element={<FormBasic onSubmit={handleFormSubmit} />} />
+            <Route path="/form-wizard" element={<FormWizard onSubmit={handleFormSubmit} />} />
+            <Route path="/" element={<Navigate to="/form-basic" />} />
+          </Routes>
         }
         splitPanel={
-          <SplitPanel header="Code" i18nStrings={{ preferencesConfirm: "Set" }}>
+          <SplitPanel header="Code" i18nStrings={{ preferencesConfirm: 'Set' }}>
             <SourceCodeView />
           </SplitPanel>
         }
       />
     </HashRouter>
-  )
+  );
 }
 
-export default App
+export default App;

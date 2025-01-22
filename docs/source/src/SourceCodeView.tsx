@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import CodeView from '@cloudscape-design/code-view/code-view';
 import CopyToClipboard from '@cloudscape-design/components/copy-to-clipboard';
-import typescriptHighlight from "@cloudscape-design/code-view/highlight/typescript";
+import typescriptHighlight from '@cloudscape-design/code-view/highlight/typescript';
 import { useLocation } from 'react-router-dom';
 
 // Code sources
@@ -21,7 +21,6 @@ const SourceCodeView: React.FC = () => {
       default:
         return FormBasicCode.default;
     }
-
   }, [location]);
 
   return (

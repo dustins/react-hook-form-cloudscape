@@ -75,7 +75,7 @@ import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header
 import { CInput, CTextarea } from 'react-hook-form-cloudscape';
 import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+import * as yup from 'yup';
 
 // Validation schema
 const schema = yup.object().shape({
@@ -85,8 +85,8 @@ const schema = yup.object().shape({
 
 // Form default values
 const defaultValues = {
-  name: "",
-  description: "",
+  name: '',
+  description: '',
 };
 
 interface Props {
@@ -100,14 +100,17 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
     reset,
     formState: { errors },
   } = useForm({
-    mode: "onBlur",
+    mode: 'onBlur',
     resolver: yupResolver(schema),
     defaultValues,
   });
 
-  const onHandleSubmit = useCallback((data: any) => {
-    onSubmit(data);
-  }, [onSubmit]);
+  const onHandleSubmit = useCallback(
+    (data: any) => {
+      onSubmit(data);
+    },
+    [onSubmit]
+  );
 
   return (
     <ContentLayout
@@ -121,22 +124,17 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
         <Form
           actions={
             <SpaceBetween direction="horizontal" size="xs">
-              <Button formAction="none" onClick={() => reset()}>Reset</Button>
+              <Button formAction="none" onClick={() => reset()}>
+                Reset
+              </Button>
               <Button variant="primary">Submit</Button>
             </SpaceBetween>
           }
         >
           <Container>
             <SpaceBetween size="s">
-              <FormField
-                label="Name"
-                errorText={get(errors, "name.message")}
-              >
-                <CInput
-                  control={control}
-                  name="name"
-                  placeholder="Name"
-                />
+              <FormField label="Name" errorText={get(errors, 'name.message')}>
+                <CInput control={control} name="name" placeholder="Name" />
               </FormField>
               <FormField
                 label={
@@ -144,13 +142,9 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
                     Description <i>- optional</i>
                   </>
                 }
-                errorText={get(errors, "description.message")}
+                errorText={get(errors, 'description.message')}
               >
-                <CTextarea
-                  control={control}
-                  name="description"
-                  placeholder="Description"
-                />
+                <CTextarea control={control} name="description" placeholder="Description" />
               </FormField>
             </SpaceBetween>
           </Container>
@@ -162,27 +156,43 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
 
 export default FormBasic;
 `,P5=`import React, { useCallback } from 'react';
-import { Button, FormField, SpaceBetween, Container, ContentLayout, Header, Wizard, Link, KeyValuePairs } from '@cloudscape-design/components';
+import {
+  Button,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+  Wizard,
+  Link,
+  KeyValuePairs,
+} from '@cloudscape-design/components';
 import { CInput } from 'react-hook-form-cloudscape';
 import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+import * as yup from 'yup';
 
 // Validation schema
 const schema = yup.object({
-  step1: yup.object().shape({
-      field1: yup.string().required().label("First field"),
-      field2: yup.string().label("Second field"),
+  step1: yup
+    .object()
+    .shape({
+      field1: yup.string().required().label('First field'),
+      field2: yup.string().label('Second field'),
     })
     .required(),
-  step2: yup.object().shape({
-      field3: yup.string().required().label("First field"),
-      field4: yup.string().label("Second field"),
+  step2: yup
+    .object()
+    .shape({
+      field3: yup.string().required().label('First field'),
+      field4: yup.string().label('Second field'),
     })
     .required(),
-  step3: yup.object().shape({
-      field5: yup.string().required().label("First field"),
-      field6: yup.string().label("Second field"),
+  step3: yup
+    .object()
+    .shape({
+      field5: yup.string().required().label('First field'),
+      field6: yup.string().label('Second field'),
     })
     .optional(),
 });
@@ -190,17 +200,17 @@ const schema = yup.object({
 // Form default values
 const defaultValues = {
   step1: {
-    field1: "",
-    field2: "",
+    field1: '',
+    field2: '',
   },
   step2: {
-    field3: "",
-    field4: "",
+    field3: '',
+    field4: '',
   },
   step3: {
-    field5: "",
-    field6: "",
-  }
+    field5: '',
+    field6: '',
+  },
 };
 
 interface Props {
@@ -219,7 +229,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
     getFieldState,
     formState: { errors },
   } = useForm({
-    mode: "onBlur",
+    mode: 'onBlur',
     resolver: yupResolver(schema),
     defaultValues,
   });
@@ -228,19 +238,22 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
     onSubmit(getValues());
   }, [getValues, onSubmit]);
 
-  const onValidateWizardStep = useCallback(async (stepIndex: number) => {
-    setIsLoadingNextStep(true);
+  const onValidateWizardStep = useCallback(
+    async (stepIndex: number) => {
+      setIsLoadingNextStep(true);
 
-    await trigger(\`step\${stepIndex}\` as keyof typeof defaultValues);
+      await trigger(\`step\${stepIndex}\` as keyof typeof defaultValues);
 
-    const { error } = await getFieldState(\`step\${stepIndex}\` as keyof typeof defaultValues);
+      const { error } = await getFieldState(\`step\${stepIndex}\` as keyof typeof defaultValues);
 
-    if (!error) {
-      setActiveStepIndex(stepIndex);
-    }
-    setIsLoadingNextStep(false);
-    return;
-  },[getFieldState, trigger]);
+      if (!error) {
+        setActiveStepIndex(stepIndex);
+      }
+      setIsLoadingNextStep(false);
+      return;
+    },
+    [getFieldState, trigger]
+  );
 
   return (
     <ContentLayout
@@ -253,9 +266,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
       <Container>
         <Wizard
           onSubmit={onWizardSubmit}
-          onNavigate={async ({ detail }) =>
-            await onValidateWizardStep(detail.requestedStepIndex)
-          }
+          onNavigate={async ({ detail }) => await onValidateWizardStep(detail.requestedStepIndex)}
           onCancel={() => {
             setActiveStepIndex(0);
             reset();
@@ -266,138 +277,111 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
           allowSkipTo
           steps={[
             {
-              title: "Choose instance type",
+              title: 'Choose instance type',
               info: <Link variant="info">Info</Link>,
               description:
-                "Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload.",
+                'Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload.',
               content: (
-                <Container
-                  header={
-                    <Header variant="h2">
-                      Form container header
-                    </Header>
-                  }
-                >
+                <Container header={<Header variant="h2">Form container header</Header>}>
                   <SpaceBetween direction="vertical" size="l">
-                    <FormField label="First field" errorText={get(errors, "step1.field1.message")}>
+                    <FormField label="First field" errorText={get(errors, 'step1.field1.message')}>
                       <CInput control={control} name="step1.field1" />
                     </FormField>
-                    <FormField label={
-                      <>
-                        Second field <i>- optional</i>
-                      </>
-                    } errorText={get(errors, "step1.field2.message")}>
+                    <FormField
+                      label={
+                        <>
+                          Second field <i>- optional</i>
+                        </>
+                      }
+                      errorText={get(errors, 'step1.field2.message')}
+                    >
                       <CInput control={control} name="step1.field2" />
                     </FormField>
                   </SpaceBetween>
                 </Container>
-              )
+              ),
             },
             {
-              title: "Add storage",
+              title: 'Add storage',
               content: (
-                <Container
-                  header={
-                    <Header variant="h2">
-                      Form container header
-                    </Header>
-                  }
-                >
+                <Container header={<Header variant="h2">Form container header</Header>}>
                   <SpaceBetween direction="vertical" size="l">
-                    <FormField label="First field" errorText={get(errors, "step2.field3.message")}>
+                    <FormField label="First field" errorText={get(errors, 'step2.field3.message')}>
                       <CInput control={control} name="step2.field3" />
                     </FormField>
-                    <FormField label={
-                      <>
-                        Second field <i>- optional</i>
-                      </>
-                    } errorText={get(errors, "step2.field4.message")}>
+                    <FormField
+                      label={
+                        <>
+                          Second field <i>- optional</i>
+                        </>
+                      }
+                      errorText={get(errors, 'step2.field4.message')}
+                    >
                       <CInput control={control} name="step2.field4" />
                     </FormField>
                   </SpaceBetween>
                 </Container>
               ),
-              isOptional: true
+              isOptional: true,
             },
             {
-              title: "Configure security group",
+              title: 'Configure security group',
               content: (
-                <Container
-                  header={
-                    <Header variant="h2">
-                      Form container header
-                    </Header>
-                  }
-                >
+                <Container header={<Header variant="h2">Form container header</Header>}>
                   <SpaceBetween direction="vertical" size="l">
-                    <FormField label="First field" errorText={get(errors, "step3.field5.message")}>
+                    <FormField label="First field" errorText={get(errors, 'step3.field5.message')}>
                       <CInput control={control} name="step3.field5" />
                     </FormField>
-                    <FormField label={
-                      <>
-                        Second field <i>- optional</i>
-                      </>
-                    } errorText={get(errors, "step3.field6.message")}>
+                    <FormField
+                      label={
+                        <>
+                          Second field <i>- optional</i>
+                        </>
+                      }
+                      errorText={get(errors, 'step3.field6.message')}
+                    >
                       <CInput control={control} name="step3.field6" />
                     </FormField>
                   </SpaceBetween>
                 </Container>
               ),
-              isOptional: true
+              isOptional: true,
             },
             {
-              title: "Review and launch",
+              title: 'Review and launch',
               content: (
                 <SpaceBetween size="xs">
-                  <Header
-                    variant="h3"
-                    actions={
-                      <Button
-                        onClick={() => setActiveStepIndex(0)}
-                      >
-                        Edit
-                      </Button>
-                    }
-                  >
+                  <Header variant="h3" actions={<Button onClick={() => setActiveStepIndex(0)}>Edit</Button>}>
                     Step 1: Instance type
                   </Header>
-                  <Container
-                    header={
-                      <Header variant="h2">
-                        Container title
-                      </Header>
-                    }
-                  >
+                  <Container header={<Header variant="h2">Container title</Header>}>
                     <KeyValuePairs
                       columns={2}
                       items={[
                         {
-                          label: "First field",
-                          value: getValues("step1.field1"),
+                          label: 'First field',
+                          value: getValues('step1.field1'),
                         },
                         {
-                          label: "Second Field",
-                          value: getValues("step1.field2")
-                        }
+                          label: 'Second Field',
+                          value: getValues('step1.field2'),
+                        },
                       ]}
                     />
                   </Container>
                 </SpaceBetween>
-              )
-            }
+              ),
+            },
           ]}
           i18nStrings={{
-            stepNumberLabel: stepNumber =>
-              \`Step \${stepNumber}\`,
-            collapsedStepsLabel: (stepNumber, stepsCount) =>
-              \`Step \${stepNumber} of \${stepsCount}\`,
-            skipToButtonLabel: (step) =>
-              \`Skip to \${step.title}\`,
-            navigationAriaLabel: "Steps",
-            cancelButton: "Reset",
-            previousButton: "Previous",
-            nextButton: "Next",
-            optional: "optional"
+            stepNumberLabel: (stepNumber) => \`Step \${stepNumber}\`,
+            collapsedStepsLabel: (stepNumber, stepsCount) => \`Step \${stepNumber} of \${stepsCount}\`,
+            skipToButtonLabel: (step) => \`Skip to \${step.title}\`,
+            navigationAriaLabel: 'Steps',
+            cancelButton: 'Reset',
+            previousButton: 'Previous',
+            nextButton: 'Next',
+            optional: 'optional',
           }}
         />
       </Container>

@@ -3,7 +3,7 @@ import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header
 import { CInput, CTextarea } from 'react-hook-form-cloudscape';
 import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+import * as yup from 'yup';
 
 // Validation schema
 const schema = yup.object().shape({
@@ -13,8 +13,8 @@ const schema = yup.object().shape({
 
 // Form default values
 const defaultValues = {
-  name: "",
-  description: "",
+  name: '',
+  description: '',
 };
 
 interface Props {
@@ -28,14 +28,17 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
     reset,
     formState: { errors },
   } = useForm({
-    mode: "onBlur",
+    mode: 'onBlur',
     resolver: yupResolver(schema),
     defaultValues,
   });
 
-  const onHandleSubmit = useCallback((data: any) => {
-    onSubmit(data);
-  }, [onSubmit]);
+  const onHandleSubmit = useCallback(
+    (data: any) => {
+      onSubmit(data);
+    },
+    [onSubmit]
+  );
 
   return (
     <ContentLayout
@@ -49,22 +52,17 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
         <Form
           actions={
             <SpaceBetween direction="horizontal" size="xs">
-              <Button formAction="none" onClick={() => reset()}>Reset</Button>
+              <Button formAction="none" onClick={() => reset()}>
+                Reset
+              </Button>
               <Button variant="primary">Submit</Button>
             </SpaceBetween>
           }
         >
           <Container>
             <SpaceBetween size="s">
-              <FormField
-                label="Name"
-                errorText={get(errors, "name.message")}
-              >
-                <CInput
-                  control={control}
-                  name="name"
-                  placeholder="Name"
-                />
+              <FormField label="Name" errorText={get(errors, 'name.message')}>
+                <CInput control={control} name="name" placeholder="Name" />
               </FormField>
               <FormField
                 label={
@@ -72,13 +70,9 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
                     Description <i>- optional</i>
                   </>
                 }
-                errorText={get(errors, "description.message")}
+                errorText={get(errors, 'description.message')}
               >
-                <CTextarea
-                  control={control}
-                  name="description"
-                  placeholder="Description"
-                />
+                <CTextarea control={control} name="description" placeholder="Description" />
               </FormField>
             </SpaceBetween>
           </Container>
