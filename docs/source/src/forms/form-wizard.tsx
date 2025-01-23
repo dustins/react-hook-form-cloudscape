@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Button,
   FormField,
@@ -77,26 +77,15 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
     defaultValues,
   });
 
-  const onWizardSubmit = useCallback(() => {
-    onSubmit(getValues());
-  }, [getValues, onSubmit]);
+  const onWizardSubmit = () => onSubmit(getValues());
 
-  const onValidateWizardStep = useCallback(
-    async (stepIndex: number) => {
-      setIsLoadingNextStep(true);
-
-      await trigger(`step${stepIndex}` as keyof typeof defaultValues);
-
-      const { error } = await getFieldState(`step${stepIndex}` as keyof typeof defaultValues);
-
-      if (!error) {
-        setActiveStepIndex(stepIndex);
-      }
-      setIsLoadingNextStep(false);
-      return;
-    },
-    [getFieldState, trigger]
-  );
+  const onValidateWizardStep = async (stepIndex: number) => {
+    setIsLoadingNextStep(true);
+    await trigger(`step${stepIndex}` as keyof typeof defaultValues);
+    const { error } = getFieldState(`step${stepIndex}` as keyof typeof defaultValues);
+    if (!error) setActiveStepIndex(stepIndex);
+    setIsLoadingNextStep(false);
+  };
 
   return (
     <ContentLayout
@@ -109,7 +98,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
       <Container>
         <Wizard
           onSubmit={onWizardSubmit}
-          onNavigate={async ({ detail }) => await onValidateWizardStep(detail.requestedStepIndex)}
+          onNavigate={({ detail }) => onValidateWizardStep(detail.requestedStepIndex)}
           onCancel={() => {
             setActiveStepIndex(0);
             reset();
@@ -117,7 +106,6 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
           isLoadingNextStep={isLoadingNextStep}
           activeStepIndex={activeStepIndex}
           submitButtonText="Launch instance"
-          allowSkipTo
           steps={[
             {
               title: 'Choose instance type',
@@ -219,7 +207,6 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
           i18nStrings={{
             stepNumberLabel: (stepNumber) => `Step ${stepNumber}`,
             collapsedStepsLabel: (stepNumber, stepsCount) => `Step ${stepNumber} of ${stepsCount}`,
-            skipToButtonLabel: (step) => `Skip to ${step.title}`,
             navigationAriaLabel: 'Steps',
             cancelButton: 'Reset',
             previousButton: 'Previous',

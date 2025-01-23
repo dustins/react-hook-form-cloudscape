@@ -1,17 +1,15 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
 import { CInput, CTextarea } from 'react-hook-form-cloudscape';
 import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-// Validation schema
-const schema = yup.object().shape({
+const schema = yup.object({
   name: yup.string().required(),
   description: yup.string(),
-});
+}).required();
 
-// Form default values
 const defaultValues = {
   name: '',
   description: '',
@@ -22,23 +20,15 @@ interface Props {
 }
 
 const FormBasic: React.FC<Props> = ({ onSubmit }) => {
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
+  const { control, handleSubmit, reset, formState: { errors } } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(schema),
     defaultValues,
   });
 
-  const onHandleSubmit = useCallback(
-    (data: any) => {
-      onSubmit(data);
-    },
-    [onSubmit]
-  );
+  const onHandleSubmit = (data: any) => {
+    onSubmit(data);
+  };
 
   return (
     <ContentLayout
@@ -79,6 +69,7 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
+
   );
 };
 

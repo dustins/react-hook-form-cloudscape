@@ -7,6 +7,9 @@ import {
   SplitPanel,
   TopNavigation,
   Flashbar,
+  AppLayoutProps,
+  Icon,
+  Link,
 } from '@cloudscape-design/components';
 import jsonHighlight from '@cloudscape-design/code-view/highlight/json';
 import { CodeView } from '@cloudscape-design/code-view';
@@ -17,10 +20,15 @@ import SourceCodeView from './SourceCodeView';
 import FormWizard from './forms/form-wizard';
 
 function App() {
+  const [activeHref, setActiveHref] = useState('');
+  const [flashMessageContent, setFlashMessageContent] = useState<string | null>(null);
+
+  // Start: Should be stored on the local storage
   const [navigationOpen, setNavigationOpen] = useState(true);
   const [toolsOpen, setToolsOpen] = useState(false);
-  const [flashMessageContent, setFlashMessageContent] = useState<string | null>(null);
-  const [activeHref, setActiveHref] = useState('');
+  const [SplitPanelOpen, setSplitPanelOpen] = useState(true);
+  const [splitPanelPreferences, setSplitPanelPreferences] = useState<AppLayoutProps.SplitPanelPreferences>({ position: 'side' });
+  // End
 
   useLayoutEffect(() => {
     setActiveHref(window.location.hash);
@@ -45,26 +53,11 @@ function App() {
             external: true,
             externalIconAriaLabel: 'GitHub (opens in a new tab)',
           },
-          {
-            type: 'menu-dropdown',
-            iconName: 'settings',
-            ariaLabel: 'Settings',
-            title: 'Settings',
-            items: [
-              {
-                id: 'settings-org',
-                text: 'Organizational settings',
-              },
-              {
-                id: 'settings-project',
-                text: 'Project settings',
-              },
-            ],
-          },
         ]}
       />
       <AppLayout
         contentType="form"
+        toolsHide
         toolsOpen={toolsOpen}
         onToolsChange={() => setToolsOpen(!toolsOpen)}
         navigationOpen={navigationOpen}
@@ -149,9 +142,22 @@ function App() {
             <Route path="/" element={<Navigate to="/form-basic" />} />
           </Routes>
         }
+        splitPanelPreferences={splitPanelPreferences}
+        onSplitPanelPreferencesChange={(event) => setSplitPanelPreferences(event.detail)}
+        splitPanelOpen={SplitPanelOpen}
+        onSplitPanelToggle={() => setSplitPanelOpen(!SplitPanelOpen)}
         splitPanel={
-          <SplitPanel header="Code" i18nStrings={{ preferencesConfirm: 'Set' }}>
+          <SplitPanel header="Source code" i18nStrings={{ preferencesConfirm: 'Set' }}>
             <SourceCodeView />
+            <br />
+            <Link
+              href="https://github.com/abudayah/react-hook-form-cloudscape/tree/main/docs/source/src"
+              external
+              target="_blank"
+            >
+              <Icon name="script" />{' '}View demos source code on github
+            </Link>
+            <br />
           </SplitPanel>
         }
       />

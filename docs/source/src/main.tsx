@@ -6,6 +6,8 @@ import '@cloudscape-design/global-styles/index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <div>
+      <App />
+    </div>
   </StrictMode>
 );

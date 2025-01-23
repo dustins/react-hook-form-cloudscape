@@ -25,7 +25,6 @@ const SourceCodeView: React.FC = () => {
 
   return (
     <CodeView
-      // lineNumbers
       wrapLines
       content={sourceCode}
       highlight={typescriptHighlight}
