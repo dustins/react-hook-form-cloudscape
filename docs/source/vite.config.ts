@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/react-hook-form-cloudscape/',
   build: {
-    assetsDir: '.',
+    assetsDir: './assets/',
     outDir: '../',
     emptyOutDir: false,
   },

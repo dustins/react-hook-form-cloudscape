@@ -7,7 +7,6 @@ import {
   SplitPanel,
   TopNavigation,
   Flashbar,
-  AppLayoutProps,
   Icon,
   Link,
 } from '@cloudscape-design/components';
@@ -18,17 +17,16 @@ import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import FormBasic from './forms/form-basic';
 import SourceCodeView from './SourceCodeView';
 import FormWizard from './forms/form-wizard';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
   const [activeHref, setActiveHref] = useState('');
   const [flashMessageContent, setFlashMessageContent] = useState<string | null>(null);
 
-  // Start: Should be stored on the local storage
-  const [navigationOpen, setNavigationOpen] = useState(true);
-  const [toolsOpen, setToolsOpen] = useState(false);
-  const [SplitPanelOpen, setSplitPanelOpen] = useState(true);
-  const [splitPanelPreferences, setSplitPanelPreferences] = useState<AppLayoutProps.SplitPanelPreferences>({ position: 'side' });
-  // End
+  const [navigationOpen, setNavigationOpen] = useLocalStorage('navigationOpen', true);
+  const [toolsOpen, setToolsOpen] = useLocalStorage('toolsOpen', false);
+  const [SplitPanelOpen, setSplitPanelOpen] = useLocalStorage('SplitPanelOpen', true);
+  const [splitPanelPreferences, setSplitPanelPreferences] = useLocalStorage('splitPanelPreferences', { position: 'side' });
 
   useLayoutEffect(() => {
     setActiveHref(window.location.hash);
