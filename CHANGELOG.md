@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.1...v1.4.2) (2025-01-26)
+
+
+### Bug Fixes
+
+* **attribute-editor:** fix attribute-editor ([464bed3](https://github.com/abudayah/react-hook-form-cloudscape/commit/464bed388519a4b8fce26a62cb9e64e759d605df))
+
 ## [1.4.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.0...v1.4.1) (2025-01-26)
 
 
