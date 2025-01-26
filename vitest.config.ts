@@ -9,7 +9,7 @@ export default defineConfig({
     setupFiles: './src/setupTests.ts',
     coverage: {
       include: ['src/**/*.ts', 'src/**/*.tsx'],
-      exclude: ['src/**/index.ts', 'src/setupTests.ts', 'vite-env.d.ts'],
+      exclude: ['src/**/index.ts', 'src/setupTests.ts', 'vite-env.d.ts', 'docs/**'],
       reporter: ['text', 'html'],
     },
   },

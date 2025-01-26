@@ -16,5 +16,12 @@
     "sourceMap": true
   },
   "include": ["src"],
-  "exclude": ["src/setupTests.ts", "node_modules", "src/**/*.test.ts", "src/**/*.test.tsx", "src/setupTests.ts"]
+  "exclude": [
+    "src/setupTests.ts",
+    "node_modules",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/setupTests.ts",
+    "docs/**/*"
+  ]
 }
