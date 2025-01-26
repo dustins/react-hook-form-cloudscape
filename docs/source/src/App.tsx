@@ -14,10 +14,12 @@ import jsonHighlight from '@cloudscape-design/code-view/highlight/json';
 import { CodeView } from '@cloudscape-design/code-view';
 
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import FormBasic from './forms/form-basic';
+import FormBasic from './components/forms/form-basic';
 import SourceCodeView from './SourceCodeView';
-import FormWizard from './forms/form-wizard';
+import FormWizard from './components/forms/form-wizard';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import Input from './components/input';
+import Textarea from './components/textarea';
 
 function App() {
   const [activeHref, setActiveHref] = useState('');
@@ -64,9 +66,7 @@ function App() {
           <SideNavigation
             activeHref={activeHref}
             onFollow={(event) => {
-              console.log(event.detail.href);
               if (!event.detail.external) {
-                // event.preventDefault();
                 setActiveHref(event.detail.href);
               }
             }}
@@ -93,22 +93,22 @@ function App() {
                 ],
               },
               { type: 'divider' },
-              // {
-              //   type: "section-group",
-              //   title: "Components",
-              //   items: [
-              //     {
-              //       type: "link",
-              //       text: "Attribute editor",
-              //       href: "#/page4"
-              //     },
-              //     {
-              //       type: "link",
-              //       text: "Autosuggest",
-              //       href: "#/page4"
-              //     },
-              //   ]
-              // },
+              {
+                type: "section-group",
+                title: "Components",
+                items: [
+                  {
+                    type: "link",
+                    text: "Input",
+                    href: "#/CInput"
+                  },
+                  {
+                    type: "link",
+                    text: "Text area",
+                    href: "#/CTextarea"
+                  },
+                ]
+              },
             ]}
           />
         }
@@ -137,6 +137,8 @@ function App() {
           <Routes>
             <Route path="/form-basic" element={<FormBasic onSubmit={handleFormSubmit} />} />
             <Route path="/form-wizard" element={<FormWizard onSubmit={handleFormSubmit} />} />
+            <Route path="/CInput" element={<Input onSubmit={handleFormSubmit} />} />
+            <Route path="/CTextarea" element={<Textarea onSubmit={handleFormSubmit} />} />
             <Route path="/" element={<Navigate to="/form-basic" />} />
           </Routes>
         }
@@ -149,7 +151,7 @@ function App() {
             <SourceCodeView />
             <br />
             <Link
-              href="https://github.com/abudayah/react-hook-form-cloudscape/tree/main/docs/source/src"
+              href="https://github.com/abudayah/react-hook-form-cloudscape/tree/main/docs/source/src/components"
               external
               target="_blank"
             >

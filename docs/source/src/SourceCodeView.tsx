@@ -5,8 +5,11 @@ import typescriptHighlight from '@cloudscape-design/code-view/highlight/typescri
 import { useLocation } from 'react-router-dom';
 
 // Code sources
-import * as FormBasicCode from './forms/form-basic?raw';
-import * as FormWizardCode from './forms/form-wizard?raw';
+import * as FormBasicCode from './components/forms/form-basic?raw';
+import * as FormWizardCode from './components/forms/form-wizard?raw';
+
+import * as InputCode from './components/input?raw';
+import * as TextareaCode from './components/textarea?raw';
 
 const SourceCodeView: React.FC = () => {
   const location = useLocation();
@@ -18,6 +21,10 @@ const SourceCodeView: React.FC = () => {
         return FormBasicCode.default;
       case '/form-wizard':
         return FormWizardCode.default;
+      case '/CInput':
+        return InputCode.default;
+      case '/CTextarea':
+        return TextareaCode.default;
       default:
         return FormBasicCode.default;
     }
