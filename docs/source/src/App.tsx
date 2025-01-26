@@ -20,6 +20,7 @@ import FormWizard from './components/forms/form-wizard';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import Input from './components/input';
 import Textarea from './components/textarea';
+import AttributeEditor from './components/attribute-editor';
 
 function App() {
   const [activeHref, setActiveHref] = useState('');
@@ -99,6 +100,11 @@ function App() {
                 items: [
                   {
                     type: "link",
+                    text: "Attribute Editor",
+                    href: "#/CAttributeEditor"
+                  },
+                  {
+                    type: "link",
                     text: "Input",
                     href: "#/CInput"
                   },
@@ -137,6 +143,7 @@ function App() {
           <Routes>
             <Route path="/form-basic" element={<FormBasic onSubmit={handleFormSubmit} />} />
             <Route path="/form-wizard" element={<FormWizard onSubmit={handleFormSubmit} />} />
+            <Route path="/CAttributeEditor" element={<AttributeEditor onSubmit={handleFormSubmit} />} />
             <Route path="/CInput" element={<Input onSubmit={handleFormSubmit} />} />
             <Route path="/CTextarea" element={<Textarea onSubmit={handleFormSubmit} />} />
             <Route path="/" element={<Navigate to="/form-basic" />} />

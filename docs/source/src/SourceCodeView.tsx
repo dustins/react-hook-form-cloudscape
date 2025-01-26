@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import * as FormBasicCode from './components/forms/form-basic?raw';
 import * as FormWizardCode from './components/forms/form-wizard?raw';
 
+import * as CAttributeEditor from './components/attribute-editor?raw';
 import * as InputCode from './components/input?raw';
 import * as TextareaCode from './components/textarea?raw';
 
@@ -21,6 +22,8 @@ const SourceCodeView: React.FC = () => {
         return FormBasicCode.default;
       case '/form-wizard':
         return FormWizardCode.default;
+      case '/CAttributeEditor':
+        return CAttributeEditor.default;
       case '/CInput':
         return InputCode.default;
       case '/CTextarea':
