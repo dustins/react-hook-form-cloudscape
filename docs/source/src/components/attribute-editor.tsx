@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CAttributeEditor, CInput } from 'react-hook-form-cloudscape';
-
-import { useForm, get, FieldValues } from 'react-hook-form';
+import { useForm, get, FieldValues, Control } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
+import { CAttributeEditor, CInput } from 'react-hook-form-cloudscape';
 
 const schema = yup.object({
   fieldName: yup.array().of(
@@ -20,9 +20,7 @@ interface Props {
 }
 
 const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm<{
-    fieldName: { key: string; value: string; }[];
-  }>({
+  const { control, handleSubmit, reset, formState: { errors } } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(schema),
     defaultValues: {
@@ -57,10 +55,8 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
             <SpaceBetween size="s">
               <FormField label="Input" errorText={get(errors, `fieldName.message`)}>
                 <CAttributeEditor
-                  control={control}
                   name="fieldName"
-                  addButtonText="Add new item"
-                  removeButtonText='Remove'
+                  control={control as unknown as Control<FieldValues>}
                   definition={[
                     {
                       label: "Key",
@@ -83,6 +79,9 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
                       )
                     }
                   ]}
+                  defaultValue={[{ key: '', value: '' }]} // Default values are required for the component to work.
+                  addButtonText="Add new item"
+                  removeButtonText='Remove'
                   empty="No items associated with the resource."
                 />
               </FormField>

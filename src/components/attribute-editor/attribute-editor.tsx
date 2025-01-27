@@ -24,7 +24,7 @@ export interface CAttributeEditorProps<T extends FieldValues>
   name: FieldArrayPath<T>;
   control: Control<T>;
   definition: Definition<T>[];
-  defaultValue?: FieldArray<T>;
+  defaultValue: FieldArray<T>;
   handleState?: boolean;
   onRemoveButtonClick?: (
     event: NonCancelableCustomEvent<AttributeEditorProps.RemoveButtonClickDetail>,
@@ -71,7 +71,7 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
         onRemoveButtonClick?.(e, remove);
       }}
       onAddButtonClick={(e) => {
-        if (handleState && defaultValue) {
+        if (handleState) {
           append(defaultValue);
         }
         onAddButtonClick?.(e, append);
