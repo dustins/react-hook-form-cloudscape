@@ -22,9 +22,9 @@ export interface Definition<T> extends Omit<AttributeEditorProps.FieldDefinition
 export interface CAttributeEditorProps<T extends FieldValues>
   extends Omit<AttributeEditorProps<T>, 'items' | 'onRemoveButtonClick' | 'onAddButtonClick'> {
   name: FieldArrayPath<T>;
-  control?: Control<T>;
+  control: Control<T>;
   definition: Definition<T>[];
-  defaultValue?: FieldArray<T>;
+  defaultValue: FieldArray<T>;
   handleState?: boolean;
   onRemoveButtonClick?: (
     event: NonCancelableCustomEvent<AttributeEditorProps.RemoveButtonClickDetail>,
@@ -65,13 +65,13 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
       definition={definitionWithError}
       items={(fields as TFieldValues[]) || []}
       onRemoveButtonClick={(e) => {
-        if (handleState && defaultValue) {
+        if (handleState) {
           remove(e.detail.itemIndex);
         }
         onRemoveButtonClick?.(e, remove);
       }}
       onAddButtonClick={(e) => {
-        if (handleState && defaultValue) {
+        if (handleState) {
           append(defaultValue);
         }
         onAddButtonClick?.(e, append);

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CInput, CTextarea } from 'react-hook-form-cloudscape';
 import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
+import { CInput, CTextarea } from 'react-hook-form-cloudscape';
 
 const schema = yup.object({
   name: yup.string().required(),

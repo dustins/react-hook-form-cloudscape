@@ -1,3 +1,17 @@
+## [1.4.3-dev.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.3-dev.1...v1.4.3-dev.2) (2025-01-27)
+
+
+### Bug Fixes
+
+* **attribute-editor:** make defaultValue required ([9d4373b](https://github.com/abudayah/react-hook-form-cloudscape/commit/9d4373b3519339e95422bd07c0e5b49634936b30))
+
+## [1.4.3-dev.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.2...v1.4.3-dev.1) (2025-01-26)
+
+
+### Bug Fixes
+
+* **CAttributeEditor:** make control required ([8676055](https://github.com/abudayah/react-hook-form-cloudscape/commit/86760552e04710e9710c9ea673534395f2a095e6))
+
 ## [1.4.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.1...v1.4.2) (2025-01-26)
 
 

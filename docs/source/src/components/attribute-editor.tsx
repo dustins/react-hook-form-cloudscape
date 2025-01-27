@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CAttributeEditor, CInput } from 'react-hook-form-cloudscape';
-
-import { useForm, get, useFieldArray } from 'react-hook-form';
+import { useForm, get, FieldValues, Control } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
+import { CAttributeEditor, CInput } from 'react-hook-form-cloudscape';
 
 const schema = yup.object({
   fieldName: yup.array().of(
@@ -15,10 +15,6 @@ const schema = yup.object({
   ).min(1, 'At least one item is required.').required(),
 }).required();
 
-const defaultValues = {
-  fieldName: [{ key: '', value: '' }],
-};
-
 interface Props {
   onSubmit: (data: any) => void;
 }
@@ -27,12 +23,9 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(schema),
-    defaultValues,
-  });
-
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: 'fieldName',
+    defaultValues: {
+      fieldName: [{ key: '', value: '' }],
+    }
   });
 
   const onHandleSubmit = (data: any) => {
@@ -62,33 +55,34 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
             <SpaceBetween size="s">
               <FormField label="Input" errorText={get(errors, `fieldName.message`)}>
                 <CAttributeEditor
-                  control={control} // Pass the control prop
-                  name="fieldName" // Pass the name of the field
-                  onAddButtonClick={() => append({ key: '', value: '' })}
-                  onRemoveButtonClick={({ detail: { itemIndex } }) => remove(itemIndex)}
-                  addButtonText="Add new item"
+                  name="fieldName"
+                  control={control as unknown as Control<FieldValues>}
                   definition={[
                     {
                       label: "Key",
-                      control: (item, itemIndex) => (
+                      control: (field: FieldValues, fieldIndex) => (
                         <CInput
+                          key={field.id}
                           control={control}
-                          name={`fieldName[${itemIndex}].key`}
+                          name={`fieldName.${fieldIndex}.key`}
                           placeholder="Enter key" />
                       )
                     },
                     {
                       label: "Value",
-                      control: (item, itemIndex) => (
+                      control: (field: FieldValues, fieldIndex) => (
                         <CInput
+                          key={field.id}
                           control={control}
-                          name={`fieldName[${itemIndex}].value`}
+                          name={`fieldName.${fieldIndex}.value`}
                           placeholder="Enter value" />
                       )
                     }
                   ]}
+                  defaultValue={[{ key: '', value: '' }]} // Default values are required for the component to work.
+                  addButtonText="Add new item"
+                  removeButtonText='Remove'
                   empty="No items associated with the resource."
-                  defaultValue={undefined}
                 />
               </FormField>
             </SpaceBetween>
